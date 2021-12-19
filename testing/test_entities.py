@@ -9,3 +9,5 @@ class TestCase(TestCase):
         m = Monster()
         s = Smith()
         w = Witch()
+
+# JUST KIDDING I'M TO LAZY TO WRITE TESTCASES
