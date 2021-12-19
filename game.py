@@ -8,7 +8,7 @@ from resources.inventory import Witch
 
 
 # INSTANTIATE ENTITIES
-player = Player(10000)
+player = Player(30)
 player.inventory.add_item(Item("Health Potion", 15, heal=40))
 player.inventory.add_item(Item("RedBull", 10, energy_boost=5))
 smith = Smith()
