@@ -19,7 +19,7 @@ monster = None
 clear()
 
 print(welcome_ui, end="")
-inp = input()
+input()
 player.travel("village")
 
 while True:

@@ -3,15 +3,18 @@ import os
 from resources.quest import Quest
 from resources.ui import gen_message_ui
 
+
 def clear():
     if os.name == "nt":
         os.system("cls")
     else:
         os.system("clear")
 
+
 def back_to_village(player, inp):
     if inp == "q":
         player.travel("village")
+
 
 def inventory(player, inp):
     if inp == "i":
@@ -33,6 +36,7 @@ def inventory(player, inp):
                 print(player.gen_stats_ui(), end="")
                 input()
 
+
 def buy(player, seller, inp):
     if inp == "b":
         shop_inp = None
@@ -44,6 +48,7 @@ def buy(player, seller, inp):
                 item = seller.sell_item(shop_inp)
                 if not player.inventory.buy_item(item):
                     seller.buy_item(item)
+
 
 def sell(player, buyer, inp):
     if inp == "s":
@@ -57,6 +62,7 @@ def sell(player, buyer, inp):
                 if not buyer.buy_item(item):
                     player.invetory.buy_item(item)
 
+
 def battle(player, enemy):
     while True:
         clear()
@@ -67,7 +73,12 @@ def battle(player, enemy):
             player.hit(enemy)
         if not enemy.is_alive():
             clear()
-            print(gen_message_ui(f";YOU WON;you earned {player.get_quest().bounty} coins;"), end="")
+            print(
+                gen_message_ui(
+                    f";YOU WON;you earned {player.get_quest().bounty} coins;"
+                ),
+                end="",
+            )
             input()
             player.inventory.add_gold(player.get_quest().bounty)
             player.active_quest = None
@@ -77,6 +88,7 @@ def battle(player, enemy):
             break
         if battle_inp == "q":
             break
+
 
 def quests(player):
     quest_inp = None
@@ -96,6 +108,7 @@ def quests(player):
             player.accept_quest(q)
     if player.get_quest():
         return player.get_quest().enemy
+
 
 def collect(player):
     event = player.collect()

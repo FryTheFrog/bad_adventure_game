@@ -1,4 +1,4 @@
-welcome_ui ="""
+welcome_ui = """
 WELCOME !
 Usually you'll see something like this:
 |              INFO               | -> usually shows your location

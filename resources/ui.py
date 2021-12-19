@@ -241,9 +241,9 @@ from math import floor, ceil
 
 
 def gen_message_ui(message):
-   message = message.split(";")
-   new = []
-   for i in message:
-       padding_len = 51 - len(i)
-       new.append(floor(padding_len / 2) * " " + i + ceil(padding_len / 2) * " ")
-   return message_ui.format(new[0], new[1], new[2], new[3])
+    message = message.split(";")
+    new = []
+    for i in message:
+        padding_len = 51 - len(i)
+        new.append(floor(padding_len / 2) * " " + i + ceil(padding_len / 2) * " ")
+    return message_ui.format(new[0], new[1], new[2], new[3])

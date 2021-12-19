@@ -66,9 +66,10 @@ class Inventory:
     def buy_item(self, item) -> object:
         if isinstance(item, Item):
             if self.gold >= item.get_price():
-                self.add_gold(- item.get_price())
+                self.add_gold(-item.get_price())
                 self.add_item(item)
-            else: return False
+            else:
+                return False
         else:
             raise TypeError("incorrect item type")
         return item
@@ -95,7 +96,7 @@ class Inventory:
                 count = "99"
             ui_str += f"| {count}x {i.item_ui()}\n"
         return ui_str
-    
+
     def gold_ui_piece(self) -> str:
         ui_str = str(self.gold)
         if len(ui_str) > 6:
@@ -117,7 +118,7 @@ class Smith(Inventory):
         self.add_item(Item("Steel Armor", 120, bonus_armor=10))
         self.add_item(Item("Titanium Armor", 400, bonus_armor=30))
         self.add_item(Item("Beskar Armor", 600, bonus_armor=70))
-    
+
     def gen_buy_ui(self, other) -> str:
         ui_str = buy_ui
         return ui_str.format(other.inventory.gold_ui_piece(), self.inventory_ui_piece())

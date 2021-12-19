@@ -1,5 +1,3 @@
-
-
 class Item:
     def __init__(self, name: str, price: int, **kwargs) -> None:
         if not isinstance(name, str):
@@ -40,7 +38,7 @@ class Item:
 
     def get_price(self) -> int:
         return self.price
-    
+
     def get_status(self) -> str:
         if self.consumable:
             status = "consumable"

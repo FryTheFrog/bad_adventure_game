@@ -23,13 +23,13 @@ class Base(ABC):
         if kwargs:
             self.__dict__.update((k, v) for k, v in kwargs.item() if k in allowed_attr)
         self.inventory = Inventory(start_gold)
-        
+
     def get_max_hp(self):
         return self.max_hp
 
     def get_hp(self):
         return self.hp
-    
+
     def get_max_energy(self):
         return self.max_energy
 
@@ -84,7 +84,7 @@ class Base(ABC):
     def stats_ui_piece(self):
         ui_str = f"| Health | {self.hp_ui_piece()} |  Energy | {self.energy_ui_piece()} |"
         return ui_str
-    
+
     def det_stats_ui_piece(self):
         return f"""|   Max HP: {self.get_max_hp()}
 |   Damage: {self.get_flat_dmg()}
@@ -114,7 +114,7 @@ class Player(Base):
 
     def get_location(self) -> str:
         return self.location
-    
+
     def get_quest(self) -> object:
         return self.active_quest
 
@@ -137,7 +137,7 @@ class Player(Base):
             self.dmg += bonus[0]
             self.armor += bonus[1]
             self.luck += bonus[2]
-    
+
     def accept_quest(self, quest:object) -> None:
         if quest == self.active_quest:
             self.active_quest = None
@@ -187,7 +187,7 @@ class Player(Base):
     def gen_inv_ui(self):
         ui_str = inventory_ui
         return ui_str.format(self.inventory.gold_ui_piece(), self.stats_ui_piece(), self.inventory.inventory_ui_piece())
-    
+
     def gen_stats_ui(self):
         ui_str = stats_ui
         return ui_str.format(self.inventory.gold_ui_piece(), self.stats_ui_piece(), self.det_stats_ui_piece())
@@ -255,7 +255,7 @@ class Monster(Base):
                 pass
         else:
             self.hit(other)
-    
+
     def bounty(self):
         stats = self.hp / 10 + self.energy + self.dmg + self.armor + self.luck
         bounty = round(stats * 2)
