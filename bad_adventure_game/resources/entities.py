@@ -21,7 +21,8 @@ class Base(ABC):
         self.luck = 10
         allowed_attr = {"max_hp", "hp", "energy", "dmg", "armor", "luck"}
         if kwargs:
-            self.__dict__.update((k, v) for k, v in kwargs.item() if k in allowed_attr)
+            self.__dict__.update((k, v)
+                                 for k, v in kwargs.item() if k in allowed_attr)
         self.inventory = Inventory(start_gold)
 
     def get_max_hp(self):
@@ -138,7 +139,7 @@ class Player(Base):
             self.armor += bonus[1]
             self.luck += bonus[2]
 
-    def accept_quest(self, quest:object) -> None:
+    def accept_quest(self, quest: object) -> None:
         if quest == self.active_quest:
             self.active_quest = None
         else:
@@ -147,7 +148,10 @@ class Player(Base):
     def gen_combat_ui(self, other):
         if isinstance(other, Monster):
             ui_str = combat_ui
-            return ui_str.format(other.name_ui_piece(), self.energy_ui_piece(), self.hp_ui_piece(), other.hp_ui_piece())
+            return ui_str.format(
+                other.name_ui_piece(), self.energy_ui_piece(
+                ), self.hp_ui_piece(), other.hp_ui_piece()
+            )
         else:
             raise TypeError("wrong type for 'other'")
 
@@ -158,7 +162,8 @@ class Player(Base):
         event = choice(["find", "trap", "ambush"])
         match event:
             case "find":
-                item = choice([Item("Health Potion", 15, heal=40), Item("RedBull", 5, energy_boost=5)])
+                item = choice([Item("Health Potion", 15, heal=40),
+                              Item("RedBull", 5, energy_boost=5)])
                 self.inventory.add_item(item)
                 return f";You found an item:;{item.get_name()};"
             case "trap":
@@ -186,15 +191,23 @@ class Player(Base):
 
     def gen_inv_ui(self):
         ui_str = inventory_ui
-        return ui_str.format(self.inventory.gold_ui_piece(), self.stats_ui_piece(), self.inventory.inventory_ui_piece())
+        return ui_str.format(
+            self.inventory.gold_ui_piece(), self.stats_ui_piece(),
+            self.inventory.inventory_ui_piece()
+        )
 
     def gen_stats_ui(self):
         ui_str = stats_ui
-        return ui_str.format(self.inventory.gold_ui_piece(), self.stats_ui_piece(), self.det_stats_ui_piece())
+        return ui_str.format(
+            self.inventory.gold_ui_piece(), self.stats_ui_piece(),
+            self.det_stats_ui_piece()
+        )
 
     def gen_sell_ui(self):
         ui_str = sell_ui
-        return ui_str.format(self.inventory.gold_ui_piece(), self.inventory.inventory_ui_piece())
+        return ui_str.format(
+            self.inventory.gold_ui_piece(), self.inventory.inventory_ui_piece()
+        )
 
 
 class Monster(Base):
