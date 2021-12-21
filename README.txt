@@ -9,6 +9,6 @@ This is a shitty game I made to practice OOP in Python. Play at your own risk.
 -It ins't entertaining
 -and probably buggy as hell
 
-if you still wanna play run "game.py" with Python 3.10
+if you still wanna play run "game.py" (in game folder) with Python 3.10
 
 Oh and also I have not implemented death, so at least you can't die I guess.
