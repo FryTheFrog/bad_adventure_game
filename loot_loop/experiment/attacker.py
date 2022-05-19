@@ -117,8 +117,6 @@ class UI(GridView):
         self.atk_button = AttackButton()
         self.hp_bar = self.enemy.hp_bar
 
-        self.grid.set_gap(0, 0)
-        self.grid.set_gutter(0)
         self.grid.set_align("center", "center")
 
         self.grid.add_column("col", max_size=30, repeat=8)
