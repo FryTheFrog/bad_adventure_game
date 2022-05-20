@@ -50,16 +50,20 @@ class HitPoints(Widget):
 
     def render(self):
         if self.dead:
-            return Panel(self.bar,
-                         title="Dead Enemy",
-                         subtitle="You Won!",
-                         style="bold",
-                         height=3)
-        return Panel(self.bar,
-                     title="Hit Points" if self.mouse_over else "Enemy",
-                     subtitle=str(self.val) if self.mouse_over else "",
-                     style="bold" if self.mouse_over else "none",
-                     height=3)
+            return Panel(
+                self.bar,
+                title="Dead Enemy",
+                subtitle="You Won!",
+                style="bold",
+                height=3,
+            )
+        return Panel(
+            self.bar,
+            title="Hit Points" if self.mouse_over else "Enemy",
+            subtitle=str(self.val) if self.mouse_over else "",
+            style="bold" if self.mouse_over else "none",
+            height=3,
+        )
 
     def on_enter(self) -> None:
         self.mouse_over = True
@@ -71,24 +75,20 @@ class HitPoints(Widget):
 class AttackButton(Button):
     def __init__(self):
         super().__init__("ATTACK")
+
     mouse_over = Reactive(False)
     mouse_down = Reactive(False)
 
     def render(self) -> Panel:
         if self.mouse_over:
             return Panel(
-                Align.center(
-                    "ATTACK!",
-                    vertical="middle"),
+                Align.center("ATTACK!", vertical="middle"),
                 box=box.HEAVY if self.mouse_down else box.ROUNDED,
                 style="red bold" if self.mouse_down else "bold",
-                border_style="red" if self.mouse_down else "none"
-                )
+                border_style="red" if self.mouse_down else "none",
+            )
         else:
-            return Panel(
-                Align.center(
-                    "attack?",
-                    vertical="middle"))
+            return Panel(Align.center("attack?", vertical="middle"))
 
     def on_enter(self) -> None:
         self.mouse_over = True
@@ -123,7 +123,7 @@ class UI(GridView):
         self.grid.add_row("row", max_size=15, repeat=8)
         self.grid.add_areas(
             hp_bar="col2-start|col7-end,row3",
-            atk_button="col3-start|col6-end,row5-start|row6-end"
+            atk_button="col3-start|col6-end,row5-start|row6-end",
         )
 
         self.grid.place(hp_bar=self.hp_bar, atk_button=self.atk_button)

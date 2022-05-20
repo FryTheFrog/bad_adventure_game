@@ -1,5 +1,5 @@
-#MODIFIED VERSION OF PROGRESSBAR
-#ONLY WORKS IF PLACED IN RICH FRAMEWORK FOLDER
+# MODIFIED VERSION OF PROGRESSBAR
+# ONLY WORKS IF PLACED IN RICH FRAMEWORK FOLDER
 
 from typing import Optional
 
@@ -68,8 +68,7 @@ class HealthBar(JupyterMixin):
         ascii = options.legacy_windows or options.ascii_only
 
         completed: Optional[float] = (
-            min(self.total, max(0, self.completed)
-                ) if self.total is not None else None
+            min(self.total, max(0, self.completed)) if self.total is not None else None
         )
 
         bar = "█" if ascii else "█"

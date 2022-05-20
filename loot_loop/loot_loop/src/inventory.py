@@ -1,7 +1,5 @@
-from tkinter.messagebox import NO
-
-
-from items import Item, Weapon, Armor, Charm, Consumable, KeyItem
+from src.items import Item, Weapon, Armor, Charm, Consumable, KeyItem
+from src.widgets import ItemList
 
 
 class Inventory:
