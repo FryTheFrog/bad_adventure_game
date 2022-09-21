@@ -6,7 +6,6 @@ from src.entities import Player, Entity
 from textual.app import App
 
 # LAZY IMPORTS
-from src.widgets import ItemList
 from src.items import Consumable
 
 
@@ -14,7 +13,6 @@ class LootLoop(App):
     p = Player()
     p.inv.add_item(Consumable("redbull", 3))
 
-    item_list = ItemList(p.inv.consumables)
 
     async def on_load(self) -> None:
         await self.bind("q", "quit", "Quit")
