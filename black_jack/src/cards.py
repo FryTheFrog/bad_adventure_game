@@ -1,5 +1,5 @@
 """
-ASCII UI TO BE REMOVED
+ASCII UI ELEMENTS TO BE REMOVED
 
 unicode suits:
 ♠ ♥ ♦ ♣

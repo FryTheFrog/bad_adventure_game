@@ -3,4 +3,4 @@
 WORK IN PROGRESS
 
 simple BlackJack game
-cards designed by me (⌐■_■)
+assets designed by me (⌐■_■)
