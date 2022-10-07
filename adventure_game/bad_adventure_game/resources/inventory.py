@@ -57,6 +57,8 @@ class Inventory:
         if self.item_finder(item):
             item = self.item_finder(item)
         if isinstance(item, Item):
+            if item.equipped:
+                self.un_equip_item(item)
             self.remove_item(item)
             self.add_gold(item.get_price())
         else:

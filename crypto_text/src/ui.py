@@ -10,10 +10,10 @@ class UI:
         self.menu = main_menu
 
     def clear(self) -> None:
-        if os.name == 'nt':
-            os.system('cls')
+        if os.name == "nt":
+            os.system("cls")
         else:
-            os.system('clear')
+            os.system("clear")
 
     def change_message(self, text: str) -> None:
         self.message.create_message(text)

@@ -1,5 +1,5 @@
-from cards import Deck
-from player import Player, Dealer
+from src.cards import Deck
+from src.player import Player, Dealer
 
 
 class Round:

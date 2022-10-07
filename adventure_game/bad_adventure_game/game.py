@@ -65,9 +65,12 @@ while True:
             inventory(player, inp)
             if inp == "x":
                 clear()
-                print(gen_message_ui(
-                    "You are about to quit;your game will not be saved;I'm to lazy to implement that;x to confirm"
-                ), end="")
+                print(
+                    gen_message_ui(
+                        "You are about to quit;your game will not be saved;I'm to lazy to implement that;x to confirm"
+                    ),
+                    end="",
+                )
                 quit_inp = input()
                 if quit_inp == "x":
                     break
@@ -80,9 +83,10 @@ while True:
             if inp == "h":
                 if not monster:
                     clear()
-                    print(gen_message_ui(
-                        ";You have not accepted;a hunting quest yet;"
-                    ), end="")
+                    print(
+                        gen_message_ui(";You have not accepted;a hunting quest yet;"),
+                        end="",
+                    )
                     input()
                     continue
                 elif monster:

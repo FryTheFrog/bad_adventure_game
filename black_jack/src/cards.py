@@ -16,37 +16,18 @@ card ASCII format:
 
 from random import shuffle
 
+from kivy.uix.image import Image
 
-class Card:
 
-    SUIT_SYMBOL = {"spade": "♠", "heart": "♥", "diamond": "♦", "club": "♣"}
+class Card(Image):
+    hidden = False
 
-    CARD = """\
-┌─────────┐
-| {}      |
-|         |
-|    {}    |
-|         |
-|      {} |
-└─────────┘""".format(
-        "{rank: <2}", "{suit}", "{rank: >2}"
-    )
-
-    HIDDEN_CARD = """\
-┌─────────┐
-| ▒░▒░▒░▒ |
-| ▒░▒░▒░▒ |
-| ▒░▒░▒░▒ |
-| ▒░▒░▒░▒ |
-| ▒░▒░▒░▒ |
-└─────────┘"""
-
-    def __init__(self, rank: str, suit: str) -> None:
+    def __init__(self, rank: str, suit: str, **kwargs) -> None:
+        super().__init__(**kwargs)
         self.rank = rank.capitalize()
         self.suit = suit.capitalize()
-        self.symbol = self.SUIT_SYMBOL[suit.lower()]
-        self.hidden = False
         self.value = self.default_val()
+        self.source = self.get_image_path()
 
     def default_val(self) -> int:
         if self.rank.isnumeric():
@@ -61,21 +42,18 @@ class Card:
     def reveal(self) -> None:
         self.hidden = False
 
-    def card_ascii(self) -> str:
-        if self.hidden:
-            return self.HIDDEN_CARD
-        rank = self.rank if self.rank == "10" else self.rank[0]
-        return self.CARD.format(rank=rank, suit=self.symbol)
+    def get_image_path(self) -> str:
+        return f"black_jack/src/card_assets/{self.suit.lower()}_{self.rank.lower()}.png"
 
-    def __repr__(self) -> str:
-        if self.hidden:
-            return "||||||||"
-        return f"({self.value}) {self.rank} of {self.suit}s"
+    # def __repr__(self) -> str:
+    #     if self.hidden:
+    #         return "||||||||"
+    #     return f"({self.value}) {self.rank} of {self.suit}s"
 
 
 class Deck:
 
-    RANKS = tuple((str(i) for i in range(1, 10))) + ("jack", "queen", "king", "ace")
+    RANKS = tuple((str(i) for i in range(2, 10))) + ("jack", "queen", "king", "ace")
 
     SUITS = ("spade", "heart", "diamond", "club")
 
