@@ -1,0 +1,156 @@
+/* COLORS */
+
+$grey_background: #2E222F
+$grey_dark: #3E3546
+$grey_mid: #625565
+$grey_light: #827079
+$grey_highlight: #9F9191
+
+$green_background: #22302D
+$green_dark: #165A4C
+$green_mid: #239063
+$green_light: #1EBC73
+$green_highlight: #91DB69
+
+$red_background: #652323
+$red_dark: #892A2A
+$red_mid: #B33831
+$red_light: #EA4F36
+$red_highlight: #F57D4A
+
+Screen {
+    layout: vertical;
+    background: $grey_background;
+}
+
+
+/* CHANCE DISPLAY */
+
+#chance_container {
+    layout: vertical;
+    max-height: 11;
+    max-width: 64;
+    border: solid $grey_mid;
+
+    & Label {
+        width: 62;
+        content-align: center middle;
+        text-align: center;
+    }
+
+    & Digits {
+        height: 5;
+        width: 64;
+        border: blank;
+        background: $grey_dark;
+        text-align: center;
+
+        &.high_chance {
+            color: $red_highlight;
+        }
+    }
+
+
+    #shell_button_container {
+        width: 63;
+        layout: grid;
+        grid-size: 9 1;
+        border: none;
+
+        & Button {
+            height: 1;
+            border: none;
+            background: $grey_dark;
+            text-style: none;
+
+            &:disabled {
+                background: $grey_dark;
+                color: $grey_mid;
+            }
+
+            &.live {
+                background: $red_mid;
+                color: black;
+            }
+            
+            &.blank {
+                background: $green_mid;
+                color: black;
+            }
+        }
+        #reset {
+            &:hover {
+                background: $grey_mid;
+            }
+        }
+    }
+}
+
+
+/* COUNTERS */
+
+#count_container {
+    layout: horizontal;
+    max-height: 13;
+    max-width: 64;
+
+    .lb_container {
+        layout: vertical;
+        max-height: 11;
+        max-width: 32;
+        border: solid $grey_mid;
+
+        & Label {
+            width: 30;
+            content-align: center middle;
+            text-align: center;
+        }
+
+        #live_label {
+            color: $red_light;
+        }
+
+        #blanks_label {
+            color: $grey_highlight;
+        }
+
+        & Digits {
+            height: 5;
+            border: blank;
+            background: $green_background;
+            color: $green_light;
+        }
+
+        .lb_button_container {
+            layout: grid;
+            grid-size: 2;
+            max-width: 30;
+
+            & Button {
+                height: 3;
+                border: blank;
+                text-style: none;
+
+                &.up_button {
+                    background: $green_dark;
+                    color: $green_highlight;
+
+                    &:hover {
+                        background: $green_mid;
+                        color: black;
+                    }
+                }
+
+                &.down_button {
+                    background: $red_dark;
+                    color: $red_highlight;
+
+                    &:hover {
+                        background: $red_mid;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
